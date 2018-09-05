@@ -1,0 +1,8 @@
+
+zsquid:UselessImportCheck"QRemove this unused import 'base.datainteractdemo.service.SharePreferenceService'.(À—Çì8Çõ³¼Ú,
+ysquid:UselessImportCheck"KRemove this unused import 'base.datainteractdemo.service.BroadcastService'.(ßúÔ¬ÿÿÿÿÿ8õŒÓ½Ú,
+]squid:UselessImportCheck"4Remove this unused import 'android.content.Context'.(©Ê‰è8óø¥Ú,
+¢squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Õ¡Ô·ûÿÿÿÿ8óø¥Ú,
+^squid:UselessImportCheck"0Remove this unused import 'android.app.Service'.(èœ—ÿúÿÿÿÿ8³’¥¼Ú,
+Ssquid:S1135"2Complete the task associated to this TODO comment.(Ãã¨Úùÿÿÿÿ8óø¥Ú,
+squid:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(¡é††8‡¬ €Ù,

@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">DataInteractDemo</string>
+    <string name="broadcast">广播</string>
+    <string name="data_interact">DataInteract</string>
+    <string name="activity_service_interact">Activity与Service交互的几种模式</string>
+    <string name="start_service">Start service</string>
+    <string name="stop_service">Stop service</string>
+    <string name="tab_layout_notice">This is a tab layout demo.</string>
+    <string name="tab_broadcast">广播</string>
+    <string name="tab_share_preferences">SharePreferences</string>
+    <string name="tab_messenger">Messenger</string>
+    <string name="tab_binder_interface">BinderInterface</string>
+    <string name="tab_aidl">AIDL</string>
+    <string name="start">开始</string>
+</resources>

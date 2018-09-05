@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="base.datainteractdemo">
+
+    <application
+        android:name=".MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".activity.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".activity.ServiceDataInteractActivity"/>
+
+        <service android:name=".service.BaseService"/>
+        <service android:name=".service.BroadcastService"/>
+        <service android:name=".service.BinderInterfaceService"/>
+        <service android:name=".service.SharePreferenceService"/>
+        <service android:name=".service.MessengerService"/>
+        <service android:name=".service.AIDLService"/>
+
+        <receiver android:name=".ManifestBroadcast"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="base.data.broadcast.print"/>
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>

@@ -1,0 +1,9 @@
+
+Rsquid:UselessImportCheck"0Remove this unused import 'java.util.TimerTask'.(àÀÇÙ
+Wsquid:UselessImportCheck"0Remove this unused import 'android.app.Service'.(èœ—ÿúÿÿÿÿ
+msquid:UselessImportCheck"FRemove this unused import 'base.datainteractdemo.IGetCurrentProgress'.(ˆ­ÂÛûÿÿÿÿ
+Vsquid:UselessImportCheck"4Remove this unused import 'android.content.Context'.(©Ê‰è
+Ssquid:UselessImportCheck",Remove this unused import 'java.util.Timer'.(†£ñáÿÿÿÿÿ
+Usquid:UselessImportCheck".Remove this unused import 'android.os.Binder'.(ïîÍşÿÿÿÿ
+osquid:UselessImportCheck"HRemove this unused import 'base.datainteractdemo.fragment.BaseFragment'.(Ş¢·øúÿÿÿÿ
+Dsquid:S1185"(Remove this method to simply inherit it.(ªĞªÄ8ÁÕö¼Ú,
