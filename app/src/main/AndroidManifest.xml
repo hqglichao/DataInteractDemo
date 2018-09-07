@@ -18,8 +18,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".activity.ServiceDataInteractActivity"/>
-
         <service android:name=".service.BaseService"/>
         <service android:name=".service.BroadcastService"/>
         <service android:name=".service.BinderInterfaceService"/>
@@ -27,12 +25,6 @@
         <service android:name=".service.MessengerService"/>
         <service android:name=".service.AIDLService"/>
 
-        <receiver android:name=".ManifestBroadcast"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="base.data.broadcast.print"/>
-            </intent-filter>
-        </receiver>
     </application>
 
 </manifest>

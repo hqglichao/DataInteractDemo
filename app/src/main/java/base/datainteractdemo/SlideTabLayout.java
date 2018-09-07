@@ -18,6 +18,8 @@ import android.widget.TextView;
 
 public class SlideTabLayout extends HorizontalScrollView implements View.OnClickListener{
     private SlidingTagStrip mStrip;
+    private int mTitleOffset;
+    private final int TITLE_OFFSET = 24;
 
     public SlideTabLayout(Context context) {
         this(context, null);
@@ -32,6 +34,7 @@ public class SlideTabLayout extends HorizontalScrollView implements View.OnClick
         setFillViewport(true);
         mStrip = new SlidingTagStrip(context);
         addView(mStrip, LayoutParams.MATCH_PARENT, ViewPager.LayoutParams.WRAP_CONTENT);
+        mTitleOffset = (int) (TITLE_OFFSET * getResources().getDisplayMetrics().density);
     }
 
     @Override
@@ -64,6 +67,21 @@ public class SlideTabLayout extends HorizontalScrollView implements View.OnClick
         }
     }
 
+    private void scrollTab(int position, int offset) {
+        int count = mStrip.getChildCount();
+        if (count == 0 || position < 0 || position >= count) {
+            return;
+        }
+        View child = mStrip.getChildAt(position);
+        if (child != null) {
+            int scrollX = child.getLeft() + offset;
+            if (position > 0 || offset > 0) {
+                scrollX -= mTitleOffset;
+            }
+            scrollTo(scrollX, 0);
+        }
+    }
+
     private static final int TAB_TEXT_SIZE = 12;
     private static final int TAB_TEXT_PADDING = 16;
     private TextView createDefaultView(Context context) {
@@ -84,19 +102,24 @@ public class SlideTabLayout extends HorizontalScrollView implements View.OnClick
     }
 
     private class InternalOnChangeListener implements ViewPager.OnPageChangeListener {
+        private int mScrollState;
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
             mStrip.onViewPagePositionChange(position, positionOffset);
+            int scrollOffset = (int) (mStrip.getChildAt(position).getWidth() * positionOffset);
+            scrollTab(position, scrollOffset);
         }
 
         @Override
         public void onPageSelected(int position) {
-
+            if (mScrollState == ViewPager.SCROLL_STATE_IDLE) {
+                scrollTab(position, 0);
+            }
         }
 
         @Override
         public void onPageScrollStateChanged(int state) {
-
+            mScrollState = state;
         }
     }
 }

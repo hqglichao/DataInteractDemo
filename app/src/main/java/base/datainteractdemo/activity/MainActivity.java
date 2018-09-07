@@ -1,46 +1,81 @@
 package base.datainteractdemo.activity;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.net.wifi.WifiManager;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
+import android.os.Looper;
+import android.support.annotation.MainThread;
+import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.widget.SeekBar;
 
 import base.datainteractdemo.Constants;
+import base.datainteractdemo.Observer;
 import base.datainteractdemo.R;
+import base.datainteractdemo.SlidingTabsColorsFragment;
 import base.datainteractdemo.logger.Log;
+import base.datainteractdemo.logger.LogFragment;
+import base.datainteractdemo.logger.LogWrapper;
+import base.datainteractdemo.logger.MessageOnlyLogFilter;
 
-import static base.datainteractdemo.Constants.TAG_V1;
+/**
+ * Created by beyond on 18-8-15.
+ */
 
-public class MainActivity extends AppCompatActivity {
-    private Button btnDataInteract;
+public class MainActivity extends FragmentActivity implements Observer{
+    private SeekBar seekBar;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        btnDataInteract = findViewById(R.id.btnDataInteract);
-
-        btnDataInteract.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ServiceDataInteractActivity.class);
-                startActivity(intent);
-            }
-        });
+        setContentView(R.layout.service_data_interact_activiy);
+        initView();
+        if (savedInstanceState == null) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            transaction.replace(R.id.tab_fragment, new SlidingTabsColorsFragment()).commit();
+        }
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        initLog();
+    }
 
-    /**
-     * send dynamic register broadcast Constants.BROADCAST_NAME
-     * & send manifest static register broadcast Constants.BROADCAST_NAME_PRINT
-     */
-    private void initBroadcast() {
+    @Override
+    public void update(final int position) {
+        if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    update(position);
+                }
+            });
+            return;
+        }
+        seekBar.setProgress(position);
+    }
 
+    private void initView() {
+        seekBar = findViewById(R.id.seekBar);
+        seekBar.setMax(Constants.SEEK_BAR_MAX);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+    private void initLog() {
+        LogWrapper logWrapper = new LogWrapper();
+        Log.setLogNode(logWrapper);
+
+        MessageOnlyLogFilter messageOnlyLogFilter = new MessageOnlyLogFilter();
+        logWrapper.setNext(messageOnlyLogFilter);
+
+        LogFragment logFragment = (LogFragment) getSupportFragmentManager().findFragmentById(R.id.log_fragment);
+        messageOnlyLogFilter.setNext(logFragment.getLogView());
+        Log.i(Constants.TAG_V1, "Ready.");
     }
 }
