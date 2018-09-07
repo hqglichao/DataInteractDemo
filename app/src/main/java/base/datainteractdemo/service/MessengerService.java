@@ -63,6 +63,7 @@ public class MessengerService extends BaseService {
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
+        super.onBind(intent);
         initTimer();
         return remoteMessenger.getBinder();
     }

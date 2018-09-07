@@ -22,6 +22,7 @@ public class BinderInterfaceService extends BaseService {
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
+        super.onBind(intent);
         initTimer();
         return new MyBinder();
     }

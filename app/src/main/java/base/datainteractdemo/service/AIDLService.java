@@ -65,6 +65,7 @@ public class AIDLService extends BaseService {
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
+        super.onBind(intent);
         initTimer();
         if (IRemoteService.class.getSimpleName().equals(intent.getAction())) {
             return new ProgressDataStub();

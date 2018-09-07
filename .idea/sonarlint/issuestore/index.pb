@@ -15,8 +15,6 @@ p
 @app/src/main/java/base/datainteractdemo/IGetCurrentProgress.java,0/b/0b70c66fb93e84da4ed877f1dadeee425f7612b9
 Z
 *app/src/main/res/layout/viewpager_item.xml,6/2/627f6dac75f4a96904652047755b2e9cebbc1d47
-j
-:app/src/main/aidl/base/datainteractdemo/IProgressData.aidl,4/e/4ec8b46153d138f81c0155780b86ed94a675bba3
 m
 =app/src/main/java/base/datainteractdemo/FragmentPageItem.java,1/8/1851fdc4e66e0b7c0020596fc26b233b5a56f3e0
 @
@@ -53,8 +51,6 @@ r
 Bapp/src/main/java/base/datainteractdemo/fragment/AIDLFragment.java,1/f/1fe6a2230479ce3c4c42fa9bb28f983c81c00f69
 }
 Mapp/src/main/java/base/datainteractdemo/fragment/SharePreferenceFragment.java,6/a/6af46f51f4d88aa5727553d0d5cf9bd937070c0f
-v
-Fapp/src/main/java/base/datainteractdemo/fragment/MessagerFragment.java,5/9/593fb8abf388ea2f35ae9227245f09b3d1d276c3
 l
 <app/src/main/java/base/datainteractdemo/ContentFragment.java,a/9/a9335206da0d1fbae6a738fe0b4a35ce18760365
 \
